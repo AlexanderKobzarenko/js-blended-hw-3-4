@@ -60,11 +60,14 @@ function createOrderSummary(
   isPremium,
   deliveryType
 ) {
-  let allTotal = calculateSubtotal(price, quantity);
+  const allTotal = calculateSubtotal(price, quantity);
   if (allTotal === 0) return 'Замовлення неможливо оформити';
   const discount = calculateDiscount(allTotal, isPremium);
   const delivery = getDeliveryPrice(deliveryType);
-  if (delivery === -1);
+  if (delivery === -1) return 'Невідомий спосіб доставки.';
+  showPackingProgress(quantity);
+  const finalTotalCost = price + delivery - discount;
+  return `Товар: ${productName}. Кількість: ${quantity}. До сплати: ${finalTotalCost} грн.`;
 }
 
 console.log(createOrderSummary('Навушники', 250, 4, true, 'standard'));
