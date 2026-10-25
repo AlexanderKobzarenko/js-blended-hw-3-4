@@ -62,8 +62,7 @@ function createOrderSummary(
   let allTotal = calculateSubtotal(price, quantity);
   if (allTotal === 0) return 'Замовлення неможливо оформити';
   const discount = calculateDiscount(allTotal, isPremium);
-    const delivery = getDeliveryPrice(deliveryType);
-    if (delivery === -1)
+  const delivery = getDeliveryPrice(deliveryType);
 }
 
 console.log(createOrderSummary('Навушники', 250, 4, true, 'standard'));
