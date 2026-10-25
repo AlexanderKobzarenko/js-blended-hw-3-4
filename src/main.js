@@ -11,7 +11,7 @@ console.log(calculateSubtotal(250, 0)); // 0
 function calculateDiscount(subtotal, isPremium){
   if(isPremium){
     if (subtotal<=1000) return subtotal*0.05;
-      else  return subtotal*0.1;
+    else  return subtotal*0.1;
   }
 return 0;
 }
@@ -19,3 +19,22 @@ console.log(calculateDiscount(1200, true)); // 120
 console.log(calculateDiscount(800, true)); // 40
 console.log(calculateDiscount(1200, false)); // 0
 console.log(calculateDiscount(0, true)); // 0
+
+
+function getDeliveryPrice(deliveryType) {
+    switch (deliveryType) {
+        case 'pickup':
+            return 0;
+        case 'standard':
+            return 80;
+        case 'express':
+            return 150;
+        default: return -1;
+    }
+}
+
+
+console.log(getDeliveryPrice('pickup')); // 0
+console.log(getDeliveryPrice('standard')); // 80
+console.log(getDeliveryPrice('express')); // 150
+console.log(getDeliveryPrice('drone')); // -1
