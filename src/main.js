@@ -51,3 +51,29 @@ function showPackingProgress(quantity) {
 showPackingProgress(3);
 showPackingProgress(1);
 showPackingProgress(0);
+
+function createOrderSummary(
+  productName,
+  price,
+  quantity,
+  isPremium,
+  deliveryType
+) {
+  let allTotal = calculateSubtotal(price, quantity);
+  if (allTotal === 0) return 'Замовлення неможливо оформити';
+  const discount = calculateDiscount(allTotal, isPremium);
+    const delivery = getDeliveryPrice(deliveryType);
+    if (delivery === -1)
+}
+
+console.log(createOrderSummary('Навушники', 250, 4, true, 'standard'));
+// Товар: Навушники. Кількість: 4. До сплати: 980 грн.
+
+console.log(createOrderSummary('Клавіатура', 800, 1, true, 'pickup'));
+// Товар: Клавіатура. Кількість: 1. До сплати: 760 грн.
+
+console.log(createOrderSummary('Миша', 500, 0, false, 'express'));
+// Замовлення неможливо оформити
+
+console.log(createOrderSummary('Монітор', 5000, 1, false, 'drone'));
+// Невідомий спосіб доставки
